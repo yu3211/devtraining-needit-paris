@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="NeedIt">0242fb8d0fa83200cd674f8ce1050e79</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>NEW</link_type>
+        <map_page/>
+        <mobile_title>申請画面</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_58872_needit_needit_task</name>
+        <order/>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles>x_58872_needit.needit_user</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-01-08 06:33:06</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8d84b18607a5a010bb6afd1e7c1ed086</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>申請画面</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_app_module_8d84b18607a5a010bb6afd1e7c1ed086</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-01-12 09:09:10</sys_updated_on>
+        <timeline_page/>
+        <title>申請画面</title>
+        <uncancelable>false</uncancelable>
+        <view_name>Request</view_name>
+        <window_name/>
+    </sys_app_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</application>
+        <file_path/>
+        <instance_id>bc37637adbc7f744b847ac44d49619b7</instance_id>
+        <instance_name>dev91016</instance_name>
+        <name>sys_app_module_8d84b18607a5a010bb6afd1e7c1ed086</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="NeedIt">0242fb8d0fa83200cd674f8ce1050e79</application><assessment/><device_type/><filter/><hint/><homepage/><image/><link_type>NEW</link_type><map_page/><mobile_title>申請画面</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>x_58872_needit_needit_task</name><order/><override_menu_roles>false</override_menu_roles><query/><report/><roles>x_58872_needit.needit_user</roles><sys_class_name>sys_app_module</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2021-01-08 06:33:06</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>8d84b18607a5a010bb6afd1e7c1ed086</sys_id><sys_mod_count>3</sys_mod_count><sys_name>申請画面</sys_name><sys_overrides/><sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package><sys_policy/><sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope><sys_update_name>sys_app_module_8d84b18607a5a010bb6afd1e7c1ed086</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2021-01-12 09:09:10</sys_updated_on><timeline_page/><title>申請画面</title><uncancelable>false</uncancelable><view_name>Request</view_name><window_name/></sys_app_module></record_update>]]></payload>
+        <payload_hash>-1845959872</payload_hash>
+        <record_name>申請画面</record_name>
+        <reverted_from/>
+        <source>d916ff0707412010bb6afd1e7c1ed001</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-01-12 09:09:10</sys_created_on>
+        <sys_id>d8ee3e9707e96410bb6afd1e7c1ed0b4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>176f5db2e870000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-01-12 09:09:10</sys_updated_on>
+        <type>Module</type>
+        <update_guid>14ee3e9775e964106710b2fb2d775eb4</update_guid>
+        <update_guid_history>14ee3e9775e964106710b2fb2d775eb4:-1845959872,8d152257e7a96410bb58127c54d22d91:104638008,d9453186d7a5a01074d28e1f51fa5887:-477944903,97c47586eda5a010d21b3d0be7c01f84:338986470</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="申請画面">d21ad3e707a5a410bb6afd1e7c1ed056</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-01-13 05:46:34</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>7d405791c80b47f09fdca06a3936a310</sys_id>
+        <sys_metadata>8d84b18607a5a010bb6afd1e7c1ed086</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_58872_needit_needit_task</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_scope_delete display_value="">94872a8897db403e8ee69a431de2fca4</sys_scope_delete>
+        <sys_update_name>sys_app_module_8d84b18607a5a010bb6afd1e7c1ed086</sys_update_name>
+        <sys_update_version display_value="sys_app_module_8d84b18607a5a010bb6afd1e7c1ed086">d8ee3e9707e96410bb6afd1e7c1ed0b4</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-01-13 05:46:34</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

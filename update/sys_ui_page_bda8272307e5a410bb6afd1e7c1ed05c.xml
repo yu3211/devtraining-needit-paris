@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[var gr = new GlideRecord('x_58872_needit_needit'); // テーブルの参照
+gr.orderBy('number');
+gr.query(); // 上記のNumber順にソートしたテーブルを取得
+
+var data = []; // 二次元配列の宣言
+while (gr.next()) {
+    data.push([false, gr.number, gr.u_requested_for, gr.u_requested_for_email, gr.u_request_type, gr.u_what_needed, gr.u_when_needed, gr.short_description]); // 二次元配列にフィールドの値を代入する
+}
+
+// スプレッドシートに表示する
+var col_select = 'select';
+var container = document.getElementById('example');
+var table = new Handsontable(container, {
+    data: data, // セルに表示するデータ
+    rowHeaders: true,
+    colHeaders: ['選択', 'Number', 'Requested for', 'Requested for email', 'Request type', 'What needed', 'When needed', 'Short description'],
+    columns: [{
+            data: col_select,
+            type: 'checkbox'
+        },
+        {
+            readOnly: true,
+            type: 'text'
+        },
+        {
+            type: 'text'
+        },
+        {
+            type: 'text'
+        },
+        {
+            type: 'text'
+        },
+        {
+            type: 'text'
+        },
+        {
+            type: 'text'
+        },
+        {
+            type: 'text'
+        }
+    ],
+    filters: true,
+    contextMenu: { // 右クリック時のメニューを追加
+        items: {
+            row_above: {
+                name: '上に行を挿入',
+                callback: function(key, normalizedSelection) {
+                    var latestSelection = normalizedSelection[Math.max(normalizedSelection.length - 1, 0)];
+                    this.alter('insert_row', latestSelection.start.row);
+                    var col = hot.propToCol(COL_PRODUCTCODE);
+                    hot.selectCell(latestSelection.start.row, col);
+                }
+            },
+            row_below: {
+                name: '下に行を挿入',
+                callback: function(key, normalizedSelection) {
+                    var latestSelection = normalizedSelection[Math.max(normalizedSelection.length - 1, 0)];
+                    this.alter('insert_row', latestSelection.end.row + 1);
+                    var col = hot.propToCol(COL_PRODUCTCODE);
+                    hot.selectCell(latestSelection.end.row + 1, col);
+                }
+            },
+            col_left: {
+                name: '右に一列挿入',
+            },
+            col_right: {
+                name: '左に一列挿入',
+            },
+            remove_row: {
+                name: '一行削除',
+            },
+            remove_col: {
+                name: '一列削除',
+            },
+            undo: {
+                name: '戻る',
+            },
+            redo: {
+                name: 'やり直す',
+            },
+        }
+    },
+    dropdownMenu: true
+});
+
+// レコード更新
+function update_record() {
+    var record = [];
+    // 選択の列にチェックが入っているレコードを取得
+    for (var i = table.countRows() - 1; i >= 0; i--) {
+        try {
+            if (table.getDataAtCell(i, 0) === true) { // チェックされていた場合
+                record = table.getDataAtRow(i); // レコード1行分の値を、配列で取得
+
+                gr.initialize(); // 選択レコード初期化
+                gr.addQuery('number', record[1]); // numberで一致したレコード１つを選択
+                gr.query(); // 上記の内容でレコードを取得
+
+                while (gr.next()) {
+                    gr.u_requested_for = record[2];
+                    gr.u_requested_for_email = record[3];
+                    gr.u_request_type = record[4];
+                    gr.u_what_needed = record[5];
+                    gr.u_when_needed = record[6];
+                    gr.short_description = record[7];
+                    gr.update(); // レコード更新
+                }
+            }
+        } catch (e) {
+            alert(e);
+        }
+    }
+    alert('選択されたレコードの更新が完了しました。');
+    window.location.reload(); // 画面リロード
+}
+
+// レコード削除
+function delete_record() {
+    // 選択の列にチェックが入っているレコードを取得
+    for (var i = table.countRows() - 1; i >= 0; i--) {
+        if (table.getDataAtCell(i, 0) === true) {
+            record = table.getDataAtRow(i); // レコード1行分の値を、配列で取得
+            gr.initialize(); // 選択レコード初期化
+            gr.addQuery('number', record[1]); // numberで一致したレコード１つを選択
+            gr.query(); // 上記の内容でレコードを取得
+            while (gr.next()) {
+                gr.deleteRecord();
+            }
+        }
+    }
+    alert('選択されたレコードの削除が完了しました。');
+    window.location.reload(); // 画面リロード
+}]]></client_script>
+        <description>レコードをスプレッドシートに表示する</description>
+        <direct>false</direct>
+        <endpoint>x_58872_needit_spreadsheet.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<?jelly escape-by-default='true'?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<g:evaluate var="table" expression="RP.getWindowProperties().get('table')" />
+	<html>
+		<head>
+			<script src="//cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js" type="text/javascript"></script>
+			<link href="//cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" rel="stylesheet" type="text/css"></link>
+		</head>
+		<body>
+			<div id="example" class="handsontable"></div>
+			<button class="btn btn-primary" onclick="update_record()">更新</button>
+			<button class="btn btn-primary" onclick="delete_record()">削除</button>
+		</body>
+	</html>
+</j:jelly>]]></html>
+        <name>spreadsheet</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-01-13 07:17:04</sys_created_on>
+        <sys_id>bda8272307e5a410bb6afd1e7c1ed05c</sys_id>
+        <sys_mod_count>182</sys_mod_count>
+        <sys_name>spreadsheet</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_ui_page_bda8272307e5a410bb6afd1e7c1ed05c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-01-27 05:12:23</sys_updated_on>
+    </sys_ui_page>
+</record_update>
